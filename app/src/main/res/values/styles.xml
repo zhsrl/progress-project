@@ -6,5 +6,10 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    
+    <style name="ButtonStyle" parent="@style/Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">#00DBEF</item>
+        <item name="colorControlHighlight">#07A9B8</item>
+    </style>
 
 </resources>
