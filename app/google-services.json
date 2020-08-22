@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "541194775818",
+    "firebase_url": "https://progress-d6ec6.firebaseio.com",
+    "project_id": "progress-d6ec6",
+    "storage_bucket": "progress-d6ec6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:541194775818:android:2ca63b39c8d3dc58dddef3",
+        "android_client_info": {
+          "package_name": "com.e.progress"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "541194775818-mptpaclkffcje8q8npk26tdbbl8cuts5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBozasvYgL8ejjycp87hb0YSJ8hW-DCxHk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "541194775818-mptpaclkffcje8q8npk26tdbbl8cuts5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

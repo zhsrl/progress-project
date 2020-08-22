@@ -31,4 +31,14 @@
         app:font="@font/montserrat_medium"
 
         />
+
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/montserrat_semibold"
+        app:fontStyle="normal"
+        app:fontWeight="400"
+        app:font="@font/montserrat_semibold"
+
+        />
 </font-family>
