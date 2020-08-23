@@ -1,21 +1,23 @@
 package com.e.progress
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Patterns
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
-import java.lang.Exception
+import java.util.HashMap
 
-class Register: AppCompatActivity(){
+class SignUp : AppCompatActivity() {
 
     private lateinit var db: FirebaseFirestore
     private lateinit var mAuth: FirebaseAuth
@@ -23,12 +25,13 @@ class Register: AppCompatActivity(){
     lateinit var ETsurname: EditText
     lateinit var ETemail: EditText
     lateinit var reference: CollectionReference
-    lateinit var ETpassword:EditText
+    lateinit var ETpassword: EditText
     lateinit var buttonRegister: Button
+    lateinit var signIn: TextView
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
-        setContentView(R.layout.registration)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_sign_up)
 
         mAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
@@ -39,25 +42,17 @@ class Register: AppCompatActivity(){
         ETpassword = findViewById(R.id.et_reg_password)
         buttonRegister = findViewById(R.id.button_register)
 
+
         buttonRegister.setOnClickListener(View.OnClickListener {
-            onClick(){
-
-            }
+            startRegistration()
         })
-    }
 
-    fun createAccount(name: String,surname: String, email: String, password: String){
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this){
-            task ->
-            if (task.isSuccessful){
-                Toast.makeText(this,"Тіркеу сәтті аяқталды", Toast.LENGTH_LONG).show()
-                val intent = Intent(this@Register, MainActivity::class.java)
-                intent.putExtra("key","registration")
-                startActivity(intent)
-            }else{
-                Toast.makeText(this,"Сіз енгізген ақпарат бойынша аккаунт бар", Toast.LENGTH_LONG).show()
-            }
-        }
+        signIn = findViewById(R.id.tv_reg_page_registration)
+
+        signIn.setOnClickListener(View.OnClickListener {
+            val intent = Intent(applicationContext, MainActivity::class.java)
+            startActivity(intent)
+        })
     }
 
     fun onClick(view: () -> Unit){
@@ -90,11 +85,25 @@ class Register: AppCompatActivity(){
         }
 
         else{
-            mAuth.createUserWithEmailAndPassword(email, password).addOnSuccessListener(this){
+            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this){
+                fun onSuccess(authResult: AuthResult){
+                    var user: FirebaseUser? = authResult.user
+                    val dataMap: MutableMap<String, String> =
+                        HashMap()
+                    dataMap["name"] = name
+                    dataMap["surname"] = surname
+                    reference.add(dataMap).addOnSuccessListener {
+                        Toast.makeText(this,"Тіркеу сәтті аяқталды", Toast.LENGTH_LONG).show()
+                        val intent = Intent(applicationContext, MainActivity::class.java)
+                        startActivity(intent)
+                    }.addOnFailureListener{
+                        Toast.makeText(this, "User registered but unable to save name and surname!", Toast.LENGTH_SHORT).show()
+                        it.printStackTrace()
+                    }
 
-
+                }
             }.addOnFailureListener(this){
-                Toast.makeText(this,"Unable to register user!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Сіз терген ақпарат бойынша аккаунт тіркелген!", Toast.LENGTH_SHORT).show()
                 it.printStackTrace()
             }
         }

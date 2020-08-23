@@ -11,5 +11,9 @@
         <item name="colorButtonNormal">#00DBEF</item>
         <item name="colorControlHighlight">#07A9B8</item>
     </style>
+    
+    <style name="OppositeWhiteScreen" parent="AppTheme">
+        <item name="android:windowDisablePreview">true</item>
+    </style>
 
 </resources>

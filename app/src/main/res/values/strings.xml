@@ -7,4 +7,9 @@
     <string name="register">Тіркелу</string>
     <string name="hasAccount">Сізде аккаунт бар ма?</string>
     <string name="signIn">Кіру</string>
+
+
+    <string name="menu_home">Үй</string>
+    <string name="menu_dhikr">Counter</string>
+    <string name="menu_chat">Чат</string>
 </resources>

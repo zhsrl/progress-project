@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var ETemail: EditText
     lateinit var ETpassword: EditText
     lateinit var signIn: Button
+    lateinit var registerAccount: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +31,17 @@ class MainActivity : AppCompatActivity() {
         ETpassword = findViewById(R.id.et_password)
 
         signIn = findViewById(R.id.button_sign_in)
+        signIn.setOnClickListener(){
+//            signIn(ETemail.text.toString(), ETpassword.text.toString())
+            startSignIn()
+        }
+
+        registerAccount = findViewById(R.id.tv_registration)
+        registerAccount.setOnClickListener(){
+            val intent = Intent(applicationContext, SignUp::class.java)
+            startActivity(intent)
+
+        }
 
     }
 
@@ -37,7 +50,7 @@ class MainActivity : AppCompatActivity() {
     fun updateUI(account: FirebaseUser?) {
         if (account != null) {
             Toast.makeText(this, "U Signed In successfully", Toast.LENGTH_LONG).show()
-            startActivity(Intent(this, ProfileInfoActivity::class.java))
+            startActivity(Intent(this, ProfileMainActivity::class.java))
         } else {
             Toast.makeText(this, "U Didnt signed in", Toast.LENGTH_LONG).show()
         }
@@ -59,11 +72,36 @@ class MainActivity : AppCompatActivity() {
             task ->
             if (task.isSuccessful){
                 Toast.makeText(this, "Authorization successful", Toast.LENGTH_LONG).show()
-                val intent = Intent(this@MainActivity, ProfileInfoActivity::class.java)
+                val intent = Intent(this@MainActivity, ProfileMainActivity::class.java)
                 intent.putExtra("key","ProfileInfo")
                 startActivity(intent)
             }else{
                 Toast.makeText(this, "Authorization failed", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    fun startSignIn(){
+        val email: String = ETemail.text.toString().trim()
+        val password: String = ETpassword.text.toString().trim()
+
+        if(email.isEmpty()){
+            Toast.makeText(this, "Почтаңызды сөзді енгізіңіз", Toast.LENGTH_SHORT).show()
+        }
+        else if(password.isEmpty()){
+            Toast.makeText(this, "Құпия сөзді енгізіңіз", Toast.LENGTH_SHORT).show()
+        }
+        else{
+            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this){
+                    task ->
+                if (task.isSuccessful){
+                    Toast.makeText(this, "Авторизация сәтті өтті", Toast.LENGTH_LONG).show()
+                    val intent = Intent(this@MainActivity, ProfileMainActivity::class.java)
+                    intent.putExtra("key","ProfileInfo")
+                    startActivity(intent)
+                }else{
+                    Toast.makeText(this, "Почта немесе құпия сөз дұрыс енгізілмеді", Toast.LENGTH_LONG).show()
+                }
             }
         }
     }
