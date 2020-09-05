@@ -4,4 +4,10 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="colorStatusBar">#FFF</color>
+
+
+    <color name="item_home">#C9379D</color>
+    <color name="item_chat">#E6A919</color>
+    <color name="item_counter">#1194AA</color>
+    <color name="item_settings">#5B37B7</color>
 </resources>

@@ -1,4 +1,4 @@
-package com.e.progress
+package com.e.progress.Activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.e.progress.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
@@ -32,7 +33,6 @@ class MainActivity : AppCompatActivity() {
 
         signIn = findViewById(R.id.button_sign_in)
         signIn.setOnClickListener(){
-//            signIn(ETemail.text.toString(), ETpassword.text.toString())
             startSignIn()
         }
 
@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity() {
         val password: String = ETpassword.text.toString().trim()
 
         if(email.isEmpty()){
-            Toast.makeText(this, "Почтаңызды сөзді енгізіңіз", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "По    чтаңызды сөзді енгізіңіз", Toast.LENGTH_SHORT).show()
         }
         else if(password.isEmpty()){
             Toast.makeText(this, "Құпия сөзді енгізіңіз", Toast.LENGTH_SHORT).show()
