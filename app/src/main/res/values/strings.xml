@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">Progress</string>
     <string name="main_subtext">Дамуды баста!</string>
+
     <string name="login">Почта</string>
     <string name="password">Құпия сөз</string>
+
     <string name="hasNotAccount">Сізде аккаунт жоқ па?</string>
     <string name="register">Тіркелу</string>
     <string name="hasAccount">Сізде аккаунт бар ма?</string>

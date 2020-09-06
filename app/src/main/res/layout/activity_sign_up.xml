@@ -3,9 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/second_main_layout"
     android:layout_height="match_parent"
     android:theme="@style/OppositeWhiteScreen"
-    android:background="#FFF"
+    android:background="@drawable/gradient_list"
     >
 
     <LinearLayout
@@ -25,7 +26,7 @@
             android:layout_gravity="center"
             android:fontFamily="@font/montserrat_semibold"
             android:text="Регистрация"
-            android:textColor="#000"
+            android:textColor="#FFF"
             android:textSize="40dp"
             tools:layout_editor_absoluteX="125dp"
             tools:layout_editor_absoluteY="134dp" />
@@ -36,9 +37,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:hint="Атыңыз"
-            android:padding="10dp"
+            android:padding="15dp"
             android:ems="10"
-            android:background="#fff"
+            android:background="@drawable/rounded_field_registration"
             android:fontFamily="@font/montserrat_light"
             android:inputType="textPersonName" />
 
@@ -46,11 +47,11 @@
             android:id="@+id/et_surname"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:padding="10dp"
+            android:padding="15dp"
             android:inputType="textPersonName"
             android:hint="Фамилия"
             android:ems="10"
-            android:background="#fff"
+            android:background="@drawable/rounded_field_registration"
             android:layout_marginTop="15dp"
             android:fontFamily="@font/montserrat_light"
             />
@@ -60,8 +61,8 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="@string/login"
-            android:padding="10dp"
-            android:background="#FFF"
+            android:padding="15dp"
+            android:background="@drawable/rounded_field_registration"
             android:layout_marginTop="15dp"
             android:fontFamily="@font/montserrat_light"
             android:inputType="textEmailAddress"
@@ -73,8 +74,8 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="@string/password"
-            android:background="#FFF"
-            android:padding="10dp"
+            android:background="@drawable/rounded_field_registration"
+            android:padding="15dp"
             android:fontFamily="@font/montserrat_light"
             android:layout_marginTop="15dp"
             android:inputType="textPassword"
@@ -102,7 +103,7 @@
             android:text="@string/hasAccount"
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
-            android:textColor="#000"
+            android:textColor="#FFF"
             />
 
         <TextView

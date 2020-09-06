@@ -44,7 +44,7 @@ class ProfileMainActivity : AppCompatActivity() {
         pager.setSwipable(true)
         pagerAdapter = ViewPageAdapter(supportFragmentManager, fragmentList)
 
-        bottomNavBar.setOnNavigationItemSelectedListener{item ->
+        bottomNavBar.setOnNavigationItemSelectedListener{ item ->
             var selectedFragment: Fragment = HomeFragment()
 
             when(item.itemId){
@@ -57,7 +57,7 @@ class ProfileMainActivity : AppCompatActivity() {
             val transaction = supportFragmentManager.beginTransaction()
             transaction.replace(R.id.fragment_container, selectedFragment)
             transaction.commit()
-            return@setOnNavigationItemSelectedListener true
+            return@setOnNavigationItemSelectedListener false
 
         }
 

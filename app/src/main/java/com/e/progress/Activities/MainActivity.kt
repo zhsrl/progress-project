@@ -1,6 +1,7 @@
 package com.e.progress.Activities
 
 import android.content.Intent
+import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -8,6 +9,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.e.progress.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -25,6 +27,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        var constraintLayout: ConstraintLayout = findViewById(R.id.main_layout)
+        var animationDrawable: AnimationDrawable = constraintLayout.background as AnimationDrawable
+        animationDrawable.setEnterFadeDuration(2000)
+        animationDrawable.setExitFadeDuration(4000)
+        animationDrawable.start()
 
         mAuth = FirebaseAuth.getInstance()
 
@@ -86,7 +94,7 @@ class MainActivity : AppCompatActivity() {
         val password: String = ETpassword.text.toString().trim()
 
         if(email.isEmpty()){
-            Toast.makeText(this, "По    чтаңызды сөзді енгізіңіз", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Почтаңызды енгізіңіз", Toast.LENGTH_SHORT).show()
         }
         else if(password.isEmpty()){
             Toast.makeText(this, "Құпия сөзді енгізіңіз", Toast.LENGTH_SHORT).show()
