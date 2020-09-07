@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         registerAccount.setOnClickListener(){
             val intent = Intent(applicationContext, SignUp::class.java)
             startActivity(intent)
-
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         }
 
     }

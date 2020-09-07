@@ -50,7 +50,6 @@ class SignUp : AppCompatActivity() {
         ETpassword = findViewById(R.id.et_reg_password)
         buttonRegister = findViewById(R.id.button_register)
 
-
         buttonRegister.setOnClickListener(View.OnClickListener {
             startRegistration()
         })
@@ -60,6 +59,7 @@ class SignUp : AppCompatActivity() {
         signIn.setOnClickListener(View.OnClickListener {
             val intent = Intent(applicationContext, MainActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         })
     }
 
@@ -67,7 +67,10 @@ class SignUp : AppCompatActivity() {
 
     }
 
+
+
     fun startRegistration(){
+
         val name: String = ETname.text.toString().trim()
         val surname: String = ETsurname.text.toString().trim()
         val email: String = ETemail.text.toString().trim()
@@ -94,16 +97,16 @@ class SignUp : AppCompatActivity() {
 
         else{
             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this){
+
                 fun onSuccess(authResult: AuthResult){
                     var user: FirebaseUser? = authResult.user
                     val dataMap: MutableMap<String, String> =
                         HashMap()
                     dataMap["name"] = name
                     dataMap["surname"] = surname
+                    reference.add(dataMap)
                     reference.add(dataMap).addOnSuccessListener {
                         Toast.makeText(this,"Тіркеу сәтті аяқталды", Toast.LENGTH_LONG).show()
-                        val intent = Intent(applicationContext, MainActivity::class.java)
-                        startActivity(intent)
                     }.addOnFailureListener{
                         Toast.makeText(this, "User registered but unable to save name and surname!", Toast.LENGTH_SHORT).show()
                         it.printStackTrace()
