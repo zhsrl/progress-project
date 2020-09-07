@@ -41,4 +41,10 @@
         app:font="@font/montserrat_semibold"
 
         />
+
+    <font
+        android:font="@font/raleway_bold"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        />
 </font-family>
