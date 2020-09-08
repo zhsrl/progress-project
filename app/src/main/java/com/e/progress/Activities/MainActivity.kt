@@ -59,6 +59,7 @@ class MainActivity : AppCompatActivity() {
         if (account != null) {
             Toast.makeText(this, "U Signed In successfully", Toast.LENGTH_LONG).show()
             startActivity(Intent(this, ProfileMainActivity::class.java))
+
         } else {
             Toast.makeText(this, "U Didnt signed in", Toast.LENGTH_LONG).show()
         }
@@ -105,7 +106,7 @@ class MainActivity : AppCompatActivity() {
                 if (task.isSuccessful){
                     Toast.makeText(this, "Авторизация сәтті өтті", Toast.LENGTH_LONG).show()
                     val intent = Intent(this@MainActivity, ProfileMainActivity::class.java)
-                    intent.putExtra("key","ProfileInfo")
+                    intent.putExtra("username","enterusername")
                     startActivity(intent)
                 }else{
                     Toast.makeText(this, "Почта немесе құпия сөз дұрыс енгізілмеді", Toast.LENGTH_LONG).show()

@@ -33,15 +33,19 @@
                 android:textColor="#3d4a52"
                 android:textSize="25dp" />
 
-            <ImageView
-                android:layout_width="32dp"
+            <TextView
+                android:id="@+id/current_time_tv"
+                android:layout_width="100dp"
                 android:layout_height="32dp"
+                android:gravity="right"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="-128dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="25dp"
-                android:src="@drawable/ic_qaaba_logo" />
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="22:45"
+                android:textSize="25dp" />
 
 
         </RelativeLayout>
@@ -101,11 +105,11 @@
             android:id="@+id/parent_info_layout"
             android:layout_width="300dp"
             android:layout_height="180dp"
-            android:elevation="10dp"
+            android:elevation="2dp"
             android:orientation="vertical"
             android:background="@drawable/info_table_background"
             android:layout_marginTop="30dp"
-            android:translationZ="10dp"
+            android:translationZ="2dp"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -233,26 +237,32 @@
                 android:orientation="horizontal">
 
                 <ImageButton
+                    android:id="@+id/namaz_time_btn"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/ic_home"
-                    android:background="#FC2"
+                    android:src="@drawable/ic_history"
+                    android:tint="#FFF"
+                    android:background="@drawable/rounded_namaz_time"
                     />
 
                 <ImageButton
+                    android:id="@+id/planner_todo_btn"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/ic_home"
-                    android:background="#FC2"
+                    android:src="@drawable/ic_time_planning"
+                    android:background="@drawable/rounded_todo"
+                    android:tint="#FFF"
                     android:layout_marginLeft="10dp"
                     />
 
                 <ImageButton
+                    android:id="@+id/qaaba_finder_btn"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/ic_home"
+                    android:src="@drawable/ic_qaaba"
+                    android:tint="#FFF"
                     android:layout_marginLeft="10dp"
-                    android:background="#FC2"
+                    android:background="@drawable/rounded_qaaba"
                     />
 
             </LinearLayout>
@@ -265,26 +275,30 @@
                 android:orientation="horizontal">
 
                 <ImageButton
+                    android:id="@+id/book_time_btn"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/ic_home"
-                    android:background="#FC2"
+                    android:background="@drawable/rounded_book_time"
+                    android:src="@drawable/ic_book_time"
+                    android:tint="#FFF"
                     />
 
                 <ImageButton
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/ic_home"
-                    android:background="#FC2"
+                    android:src="@drawable/ic_stat"
+                    android:background="@drawable/rounded_statistics"
+                    android:tint="#FFF"
                     android:layout_marginLeft="10dp"
                     />
 
                 <ImageButton
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/ic_home"
+                    android:src="@drawable/ic_add"
+                    android:tint="#FFF"
                     android:layout_marginLeft="10dp"
-                    android:background="#FC2"
+                    android:background="@drawable/rounded_adding_another_data"
                     />
 
 
