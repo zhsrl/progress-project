@@ -1,20 +1,21 @@
 package com.e.progress.Fragments
 
-import android.content.Intent.getIntent
-import android.content.Intent.getIntentOld
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.e.progress.Activities.MainActivity
-import com.e.progress.Activities.SignUp
+import com.e.progress.NamazTime
 import com.e.progress.R
+import com.e.progress.Timer
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 class HomeFragment : Fragment() {
 
@@ -25,12 +26,16 @@ class HomeFragment : Fragment() {
     lateinit var currentTimeShow: TextView
     lateinit var userName: TextView
 
+    lateinit var namazTime: ImageButton
+    lateinit var bookTime: ImageButton
+
     var someHandler: Handler = Handler(Looper.getMainLooper())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         return inflater.inflate(R.layout.home_fragment, container, false)
 
     }
@@ -41,8 +46,24 @@ class HomeFragment : Fragment() {
         currentTimeShow = view?.findViewById(R.id.current_time_tv) ?: TextView(context)
         userName = view?.findViewById(R.id.user_name_tv) ?: TextView(context)
 
-        var name: String = activity!!.intent.getStringExtra("username")
-        userName.setText(name)
+
+        // NAMAZ TIME LOGIC
+        namazTime = view?.findViewById(R.id.namaz_time_btn) ?: ImageButton(context)
+
+        namazTime.setOnClickListener {
+            val intent = Intent(activity, NamazTime::class.java)
+            startActivity(intent)
+            activity!!.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+        }
+
+        //BOOK TIME LOGIC
+        bookTime = view?.findViewById(R.id.book_time_btn)
+
+        bookTime.setOnClickListener(){
+            val intent = Intent(activity, Timer::class.java)
+            startActivity(intent)
+            activity!!.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+        }
 
 
         someHandler.postDelayed(object : Runnable {

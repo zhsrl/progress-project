@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.e.progress.Fragments.HomeFragment
 import com.e.progress.R
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -45,7 +46,6 @@ class SignUp : AppCompatActivity() {
         db = FirebaseFirestore.getInstance()
 
         ETname = findViewById(R.id.et_name)
-        ETsurname = findViewById(R.id.et_surname)
         ETemail = findViewById(R.id.et_reg_email)
         ETpassword = findViewById(R.id.et_reg_password)
         buttonRegister = findViewById(R.id.button_register)
@@ -72,7 +72,6 @@ class SignUp : AppCompatActivity() {
     fun startRegistration(){
 
         val name: String = ETname.text.toString().trim()
-        val surname: String = ETsurname.text.toString().trim()
         val email: String = ETemail.text.toString().trim()
         val password: String = ETpassword.text.toString().trim()
 
@@ -91,22 +90,19 @@ class SignUp : AppCompatActivity() {
         else if(name.isEmpty()){
             Toast.makeText(this, "Есіміңізді енгізіңіз", Toast.LENGTH_SHORT).show()
         }
-        else if(surname.isEmpty()){
-            Toast.makeText(this, "Тегіңізді енгізіңіз", Toast.LENGTH_SHORT).show()
-        }
-
         else{
-            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this){
-
+            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this) {
                 fun onSuccess(authResult: AuthResult){
                     var user: FirebaseUser? = authResult.user
                     val dataMap: MutableMap<String, String> =
                         HashMap()
                     dataMap["name"] = name
-                    dataMap["surname"] = surname
                     reference.add(dataMap)
+                    intent.putExtra("name", name)
                     reference.add(dataMap).addOnSuccessListener {
                         Toast.makeText(this,"Тіркеу сәтті аяқталды", Toast.LENGTH_LONG).show()
+                        val intent = Intent(applicationContext, MainActivity::class.java)
+                        startActivity(intent)
                     }.addOnFailureListener{
                         Toast.makeText(this, "User registered but unable to save name and surname!", Toast.LENGTH_SHORT).show()
                         it.printStackTrace()
@@ -117,6 +113,10 @@ class SignUp : AppCompatActivity() {
                 Toast.makeText(this,"Сіз терген ақпарат бойынша аккаунт тіркелген!", Toast.LENGTH_SHORT).show()
                 it.printStackTrace()
             }
+
         }
+
+
+
     }
 }

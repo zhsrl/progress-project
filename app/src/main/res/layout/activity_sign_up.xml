@@ -44,19 +44,6 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/et_surname"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:padding="15dp"
-            android:inputType="textPersonName"
-            android:hint="Фамилия"
-            android:ems="10"
-            android:background="@drawable/rounded_field_registration"
-            android:layout_marginTop="15dp"
-            android:fontFamily="@font/montserrat_light"
-            />
-
-        <EditText
             android:id="@+id/et_reg_email"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
