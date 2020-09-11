@@ -23,19 +23,70 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <Button
         android:id="@+id/start_timer_tv"
-        android:layout_width="350dp"
-        android:layout_height="200dp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_timer_btn"
         android:fontFamily="@font/montserrat_medium"
         android:gravity="center"
         android:text="БАСТАУ"
         android:textColor="#FFF"
-        android:textSize="30dp"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/time_count"
-        app:layout_constraintVertical_bias="0.846" />
+        app:layout_constraintVertical_bias="0.655" />
+
+    <Button
+        android:id="@+id/pause_timer_tv"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_pause_btn"
+        android:fontFamily="@font/montserrat_medium"
+        android:gravity="center"
+        android:text="ПАУЗА"
+        android:textColor="#FFF"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/start_timer_tv"
+        app:layout_constraintVertical_bias="0.089" />
+
+    <Button
+        android:id="@+id/stop_timer_tv"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_stop_btn"
+        android:fontFamily="@font/montserrat_medium"
+        android:gravity="center"
+        android:text="СТОП"
+        android:textColor="#FFF"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pause_timer_tv"
+        app:layout_constraintVertical_bias="0.211" />
+
+    <Button
+        android:id="@+id/resume_timer_tv"
+        android:layout_width="180dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_timer_btn"
+        android:fontFamily="@font/montserrat_medium"
+        android:gravity="center"
+        android:text="ЖАЛҒАСТЫРУ"
+        android:textColor="#FFF"
+        android:textSize="20dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/start_timer_tv"
+        app:layout_constraintVertical_bias="0.089" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
