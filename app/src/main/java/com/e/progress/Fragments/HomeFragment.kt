@@ -10,8 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.e.progress.NamazTime
-import com.e.progress.R
+import com.e.progress.*
 import com.e.progress.Timer
 import java.text.SimpleDateFormat
 import java.util.*
@@ -28,6 +27,8 @@ class HomeFragment : Fragment() {
 
     lateinit var namazTime: ImageButton
     lateinit var bookTime: ImageButton
+    lateinit var qiblaFinder: ImageButton
+    lateinit var toDo: ImageButton
 
     var someHandler: Handler = Handler(Looper.getMainLooper())
 
@@ -72,6 +73,25 @@ class HomeFragment : Fragment() {
                 someHandler.postDelayed(this, 1000)
             }
         }, 10)
+
+
+        //QIBLA FINDER LOGIC
+        qiblaFinder = view?.findViewById(R.id.qaaba_finder_btn)
+
+        qiblaFinder.setOnClickListener{
+            val intent = Intent(activity, QiblaFind::class.java)
+            intent.putExtra("key","QiblaFinder")
+            startActivity(intent)
+        }
+
+        //PLANNER_TODO LOGIC
+        toDo = view?.findViewById(R.id.planner_todo_btn)
+
+        toDo.setOnClickListener{
+            val intent = Intent(activity, ToDoPlanner::class.java)
+            intent.putExtra("key","toDoPlanner")
+            startActivity(intent)
+        }
 
     }
 

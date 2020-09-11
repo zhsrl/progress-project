@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Timer"></activity>
+        <activity android:name=".ToDoPlanner"></activity>
+        <activity android:name=".QiblaFind" />
+        <activity android:name=".Timer" />
         <activity android:name=".NamazTime" />
         <activity android:name=".Activities.ProfileMainActivity" />
         <activity android:name=".Activities.SignUp" />
