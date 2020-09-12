@@ -19,7 +19,6 @@ import javax.xml.namespace.QName.valueOf
 
 class Timer : AppCompatActivity() {
     lateinit var startBookTime: Button
-    lateinit var stopBookTime: Button
     lateinit var pauseBookTime: Button
     lateinit var resumeBookTime: Button
     lateinit var timeNum: TextView
@@ -49,20 +48,7 @@ class Timer : AppCompatActivity() {
         startBookTime.setOnClickListener(){
             timer(millisInFuture, countDownInterval).start()
             it.isEnabled = false
-            stopBookTime.isEnabled = true
             pauseBookTime.isEnabled = true
-        }
-
-        stopBookTime = findViewById(R.id.stop_timer_tv)
-        stopBookTime.setOnClickListener{
-            isCanceled = true
-            isPaused = false
-
-            it.isEnabled = false
-            startBookTime.isEnabled = true
-            pauseBookTime.isEnabled = false
-
-
         }
 
         pauseBookTime = findViewById(R.id.pause_timer_tv)
@@ -72,28 +58,23 @@ class Timer : AppCompatActivity() {
 
             it.isEnabled = false
             startBookTime.isEnabled = false
-            stopBookTime.isEnabled = false
             pauseBookTime.isEnabled = true
 
-            resumeBookTime.visibility = View.VISIBLE
-            pauseBookTime.visibility = View.INVISIBLE
+
 
         }
 
         resumeBookTime = findViewById(R.id.resume_timer_tv)
         resumeBookTime.setOnClickListener{
             timer(resumeFromMillis, countDownInterval).start()
-
             isPaused = false
             isCanceled = false
 
             it.isEnabled = false
             startBookTime.isEnabled = false
-            stopBookTime.isEnabled = true
             pauseBookTime.isEnabled = true
+            resumeBookTime.isEnabled = true
 
-            pauseBookTime.visibility = View.VISIBLE
-            resumeBookTime.visibility = View.INVISIBLE
         }
 
 
